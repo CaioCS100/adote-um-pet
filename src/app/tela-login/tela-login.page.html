@@ -1,0 +1,19 @@
+<ion-content>
+  <h1 id="titulo">Adote um Pet</h1>
+  <form [formGroup]="formulario">
+    <ion-list>
+      <ion-item>
+          <ion-label position="floating"><span class="especial">Email:</span></ion-label>
+          <ion-input  type="email" id="email" formControlName="email" placeholder="Digite seu email"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating"><span class="especial">Senha:</span></ion-label>
+          <ion-input  type="password" id="senha" formControlName="senha" placeholder="Digite sua senha"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button color="light" shape="round" expand="full" id="login" (click)="fazerLogin()">
+      <span class="especial">Entrar</span>
+    </ion-button>
+  </form>
+</ion-content>

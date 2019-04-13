@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+#login{
+    margin-top: 10%;
+}
+
+#titulo, .especial, ion-input{
+    font-family: 'Pacifico', cursive;
+}
+
+#titulo{
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    margin: 15% auto 15% auto;
+}
+
+ion-content{
+    --background: url('../../assets/img/main_background.jpg') center 100% no-repeat;
+}
+
+ion-list {
+    --ion-item-background: rgba(255, 255, 255, 0.0);
+    margin-bottom: 5%;
+}
+
+ion-item {
+    --ion-item-background: rgba(255, 255, 255, 0.3);
+    font-size: 15pt;
+    color: white;
+}
