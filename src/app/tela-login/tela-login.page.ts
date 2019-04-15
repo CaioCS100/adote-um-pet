@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthService } from '../servicos/auth.service';
 
 @Component({
   selector: 'app-tela-login',
@@ -13,7 +14,7 @@ export class TelaLoginPage implements OnInit {
   formulario:FormGroup;
 
   constructor(private formBuilder: FormBuilder, private toastController: ToastController,
-              private router: Router) { }
+              private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
@@ -23,17 +24,12 @@ export class TelaLoginPage implements OnInit {
   }
 
   fazerLogin() {
-    if(this.formulario.valid && this.formulario.get('email').value == "teste@teste.com" &&
-      this.formulario.get('senha').value == "123") 
-    {
-      this.router.navigateByUrl('tela-inicial');
-    }
-    else
-    {
-      console.log("entrou aqui");
-      
-      this.mostrarErro();
-    }
+    this.authService.login(this.formulario.get('email').value,
+       this.formulario.get('senha').value).then( resposta =>{
+        this.router.navigateByUrl('tela-inicial');
+       }).catch(erro => {
+        this.mostrarErro();
+       });
   }
 
   async mostrarErro() {
