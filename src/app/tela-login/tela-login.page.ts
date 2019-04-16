@@ -32,6 +32,10 @@ export class TelaLoginPage implements OnInit {
        });
   }
 
+  fazerCadastro() {
+    this.router.navigateByUrl('tela-cadastro-login');
+  }
+
   async mostrarErro() {
     const toast = await this.toastController.create({
       message: 'Login ou senha incorreta!',

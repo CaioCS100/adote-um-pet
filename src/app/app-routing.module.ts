@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'tela-inicial', loadChildren: './tela-inicial/tela-inicial.module#TelaInicialPageModule' },
   { path: 'tela-login', loadChildren: './tela-login/tela-login.module#TelaLoginPageModule' },
+  { path: 'tela-cadastro-login', loadChildren: './tela-cadastro-login/tela-cadastro-login.module#TelaCadastroLoginPageModule' },
 ];
 
 @NgModule({

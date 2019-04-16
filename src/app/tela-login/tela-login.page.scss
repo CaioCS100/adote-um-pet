@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 #login{
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 #titulo, .especial, ion-input{
@@ -10,9 +10,14 @@
 
 #titulo{
     text-align: center;
-    color: white;
+    color: black;
     font-weight: bolder;
-    margin: 15% auto 15% auto;
+    margin: 5% auto 5% auto;
+}
+
+.link{
+    padding-left: 20%;
+    text-decoration: underline;
 }
 
 ion-content{
@@ -25,7 +30,7 @@ ion-list {
 }
 
 ion-item {
-    --ion-item-background: rgba(255, 255, 255, 0.3);
+    --ion-item-background: rgba(255, 255, 255, 0.2);
     font-size: 15pt;
-    color: white;
+    color: black;
 }
