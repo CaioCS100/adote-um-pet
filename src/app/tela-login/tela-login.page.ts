@@ -24,21 +24,37 @@ export class TelaLoginPage implements OnInit {
   }
 
   fazerLogin() {
-    this.authService.login(this.formulario.get('email').value,
-       this.formulario.get('senha').value).then( resposta =>{
+    if(this.formulario.valid)
+    {
+      this.authService.verificarLogin(this.formulario).then( resposta =>{
         this.router.navigateByUrl('tela-inicial');
        }).catch(erro => {
-        this.mostrarErro();
+        this.mostrarErro('Login ou senha incorreta!');
        });
+    }
+    else
+      this.verificarCamposComErro();
+  }
+
+  private verificarCamposComErro()
+  {
+    let msgEmail = 'um email válido';
+    let msgSenha = 'uma senha válida';
+    let msgErro = 'Por favor digite ';
+
+    !this.formulario.get('email').valid && this.formulario.get('senha').valid ? msgErro += msgEmail  : '';
+    !this.formulario.get('senha').valid && this.formulario.get('email').valid ? msgErro += msgSenha  : '';
+    !this.formulario.get('email').valid && !this.formulario.get('senha').valid ? msgErro += msgEmail + ' e ' + msgSenha : '';
+    this.mostrarErro(msgErro + '!');
   }
 
   fazerCadastro() {
     this.router.navigateByUrl('tela-cadastro-login');
   }
 
-  async mostrarErro() {
+  async mostrarErro(value:string) {
     const toast = await this.toastController.create({
-      message: 'Login ou senha incorreta!',
+      message: value,
       duration: 3000
     });
     toast.present();

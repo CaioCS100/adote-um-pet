@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { promise } from 'protractor';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +9,35 @@ export class AuthService {
 
   constructor(private angularFireAuth : AngularFireAuth) { }
 
-  login(email:string, senha:string)
+  verificarLogin(formulario:FormGroup)
   {
     return new Promise((resolve, reject) => {
-      this.angularFireAuth.auth.signInWithEmailAndPassword(email, senha).then(user => {
+      this.angularFireAuth.auth.signInWithEmailAndPassword(formulario.get('email').value, 
+      formulario.get('senha').value).then(user => {
         resolve(user);
       }).catch(err => reject(err));
     }); 
+  }
+
+  criarConta(formulario:FormGroup)
+  {
+    return new Promise<any>((resolve, reject) => {
+      this.angularFireAuth.auth.createUserWithEmailAndPassword(formulario.get('email').value,
+       formulario.get('senha').value).then(res => {
+        resolve(res);
+      }).catch( err => reject(err))
+    })
+  }
+
+  deslogar()
+  {
+    return new Promise((resolve, reject) => {
+      if (this.angularFireAuth.auth.currentUser) {
+        this.angularFireAuth.auth.signOut();
+        resolve();
+      }
+      else
+        reject();
+    });
   }
 }
