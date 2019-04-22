@@ -9,8 +9,13 @@ import { TelaInicialPage } from './tela-inicial.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: TelaInicialPage
+    path: 'tela-inicial',
+    component: TelaInicialPage,
+    children: [
+      { path: '', redirectTo: '/tela-inicial/home', pathMatch: 'full' },
+      { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+      { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
+    ]
   }
 ];
 

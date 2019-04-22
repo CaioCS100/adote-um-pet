@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../servicos/auth.service';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -8,14 +7,16 @@ import { AuthService } from '../servicos/auth.service';
 })
 export class TelaInicialPage implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  teste()
+  sair()
   {
-    this.authService.deslogar();
+    console.log('chegou aqui');
+    //navigator['app'].exitApp();
+    //this.platform.exit
   }
 
 }
