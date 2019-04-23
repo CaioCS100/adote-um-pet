@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+img{
+    border-radius: 5%;
+    height: 400px;
+    width: 320px;
+}
+
+ion-card-title{
+    font-family: 'Pacifico', cursive;
+}
+
+ion-slide{
+    margin-top: 10%;
+}
+
+ion-slides{
+    border-radius: 5%;
+}
+
+.swiper-pagination {
+    top:20px;
+    bottom:inherit;
+ }
