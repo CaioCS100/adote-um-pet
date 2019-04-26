@@ -1,5 +1,7 @@
 {
   "name": "adote_um_pet",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

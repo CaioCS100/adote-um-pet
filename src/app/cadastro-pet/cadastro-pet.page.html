@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="medium">
     <ion-title>cadastro-pet</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -8,5 +8,81 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="formulario">
+  
+  <div id="imagem" class="imagem">
+    <ion-img [src]="imagem" (click)="tirarFoto()" class="foto"></ion-img>
+  </div>
+  
+  <ion-radio-group formControlName="tipo">
+    <ion-label class="labels">Pet:</ion-label>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label>Cachorro</ion-label>
+          <ion-radio slot="start" value="C" checked></ion-radio>
+        </ion-item>
+      </ion-col>
+      
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label>Gato</ion-label>
+          <ion-radio slot="start" value="G"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-radio-group>
+  
+  <ion-row>
+    <ion-col size="12">
+      <ion-label position="floating" class="labels">Nome do Pet:</ion-label>
+      <ion-item class="espaco">
+        <ion-input type="text" formControlName="nome" placeholder="Digite o nome do pet"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-radio-group formControlName="sexo">
+    <ion-label class="labels">Sexo:</ion-label>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label>Macho</ion-label>
+          <ion-radio slot="start" value="M" checked></ion-radio>
+        </ion-item>
+      </ion-col>
+      
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label>Fêmea</ion-label>
+          <ion-radio slot="start" value="F"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-radio-group>
+  
+  <ion-row>
+    <ion-col size="12">
+      <ion-item lines="none">
+        <ion-label>Estado</ion-label>
+        <ion-select placeholder="Selecione um estado" formControlName="estado">
+          <ion-select-option *ngFor="let estado of estados" [value]="estado">{{estado}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col size="12">
+      <ion-label position="floating" class="labels">Telefone:</ion-label>
+      <ion-item class="espaco">
+        <ion-input type="text" formControlName="telefone" placeholder="Digite seu telefone para contato"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 
+  <ion-button color="primary" shape="round" expand="full" id="cadastrar" (click)="cadastrarPet()">
+      <span class="especial">Cadastrar pet</span>
+    </ion-button>
+  </form>
 </ion-content>
