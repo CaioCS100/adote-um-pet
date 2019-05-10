@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="medium">
+  <ion-toolbar>
     <ion-title>cadastro-pet</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -65,8 +65,19 @@
     <ion-col size="12">
       <ion-item lines="none">
         <ion-label>Estado</ion-label>
-        <ion-select placeholder="Selecione um estado" formControlName="estado">
-          <ion-select-option *ngFor="let estado of estados" [value]="estado">{{estado}}</ion-select-option>
+        <ion-select placeholder="Selecione um estado" formControlName="estado" (ionChange)="getCidades()" [(ngModel)]="estado">
+          <ion-select-option *ngFor="let estado of brasil" [value]="estado.nome">{{estado.nome}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12">
+      <ion-item lines="none">
+        <ion-label>Cidade</ion-label>
+        <ion-select placeholder="Selecione uma cidade" formControlName="cidade">
+          <ion-select-option *ngFor="let cidade of cidades" [value]="cidade">{{cidade}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>
