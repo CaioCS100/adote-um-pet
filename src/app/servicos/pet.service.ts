@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase'
-import { FormGroup } from '@angular/forms';
+import { Pet } from '../models/pet';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +15,21 @@ export class PetService {
     this.db = firebase.database().ref('pet').child(userID);
   }
 
-  cadastrar(formulario:FormGroup) {
+  async cadastrar(model:Pet) {
+    let today = new Date();
     let uid = this.db.push().key;
-    let pet = {
-      id: uid,
-      nome: formulario.get('nome').value,
-      sexo: formulario.get('sexo').value,
-      tipo: formulario.get('tipo').value,
-      telefone: formulario.get('telefone').value,
-      estado: formulario.get('estado').value
-    };
+    model.id = uid;
+    model.data_envio = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    model.adotado = false;
+    if (model.pathImage == null)
+      model.pathImage = '';
 
-    console.log(pet);
-    
-    this.db.child(uid).set(pet);
+    await this.db.child(uid).set(model, function(error) {
+      if (!error)
+        return true;
+    });
 
+    return false;
   }
+  
 }

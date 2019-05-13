@@ -14,7 +14,7 @@
     <ion-img [src]="imagem" (click)="tirarFoto()" class="foto"></ion-img>
   </div>
   
-  <ion-radio-group formControlName="tipo">
+  <ion-radio-group formControlName="genero">
     <ion-label class="labels">Pet:</ion-label>
     <ion-row>
       <ion-col size="6">
@@ -60,6 +60,15 @@
       </ion-col>
     </ion-row>
   </ion-radio-group>
+
+  <ion-row>
+    <ion-col size="12">
+      <ion-label position="floating" class="labels">Idade do Pet:</ion-label>
+      <ion-item class="espaco">
+        <ion-input type="number" formControlName="idade" placeholder="Digite a idade do pet"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
   
   <ion-row>
     <ion-col size="12">
@@ -87,7 +96,7 @@
     <ion-col size="12">
       <ion-label position="floating" class="labels">Telefone:</ion-label>
       <ion-item class="espaco">
-        <ion-input type="text" formControlName="telefone" placeholder="Digite seu telefone para contato"></ion-input>
+        <ion-input type="number" formControlName="telefone" placeholder="Digite seu telefone para contato"></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
