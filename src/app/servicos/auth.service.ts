@@ -24,7 +24,11 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       this.angularFireAuth.auth.createUserWithEmailAndPassword(formulario.get('email').value,
        formulario.get('senha').value).then(res => {
-        resolve(res);
+          res.user.updateProfile({
+            displayName: formulario.get('nome').value
+          }).then(resposta => {
+            resolve(resposta);
+          });
       }).catch( err => reject(err))
     })
   }

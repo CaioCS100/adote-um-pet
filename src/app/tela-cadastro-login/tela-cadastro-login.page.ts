@@ -18,6 +18,7 @@ export class TelaCadastroLoginPage implements OnInit {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
+      nome: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.email]],
       senha: ['',[Validators.required, Validators.minLength(6)]]
     });
@@ -39,13 +40,15 @@ export class TelaCadastroLoginPage implements OnInit {
 
   private verificarCamposComErro()
   {
+    let msgNome = 'um nome válido';
     let msgEmail = 'um email válido';
-    let msgSenha = 'uma senha válida e com no minimo 6 caracteres';
+    let msgSenha = 'uma senha com no minimo 6 caracteres';
     let msgErro = 'Por favor digite ';
 
-    !this.formulario.get('email').valid && this.formulario.get('senha').valid ? msgErro += msgEmail  : '';
-    !this.formulario.get('senha').valid && this.formulario.get('email').valid ? msgErro += msgSenha  : '';
-    !this.formulario.get('email').valid && !this.formulario.get('senha').valid ? msgErro += msgEmail + ' e ' + msgSenha : '';
+    !this.formulario.get('nome').valid && this.formulario.get('email').valid && this.formulario.get('senha').valid ? msgErro += msgNome  : '';
+    !this.formulario.get('email').valid && this.formulario.get('nome').valid && this.formulario.get('senha').valid ? msgErro += msgEmail  : '';
+    !this.formulario.get('senha').valid && this.formulario.get('nome').valid && this.formulario.get('email').valid ? msgErro += msgSenha  : '';
+    !this.formulario.get('email').valid && !this.formulario.get('nome').valid && !this.formulario.get('senha').valid ? msgErro += msgNome + ' ,' + msgEmail + ' e ' + msgSenha : '';
     this.mostrarErro(msgErro + '!');
   }
 

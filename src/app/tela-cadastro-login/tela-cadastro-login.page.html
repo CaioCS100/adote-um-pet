@@ -7,6 +7,10 @@
     <form [formGroup]="formulario">
       <ion-list>
         <ion-item>
+            <ion-label position="floating"><span class="especial">Nome:</span></ion-label>
+            <ion-input  type="text" id="nome" formControlName="nome" placeholder="Digite seu nome"></ion-input>
+        </ion-item>
+        <ion-item>
             <ion-label position="floating"><span class="especial">Email:</span></ion-label>
             <ion-input  type="email" id="email" formControlName="email" placeholder="Digite seu email"></ion-input>
         </ion-item>

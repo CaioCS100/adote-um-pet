@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -15,6 +16,7 @@ export class TelaInicialPage implements OnInit {
   sair()
   {
     console.log('chegou aqui');
+    this.router.navigateByUrl('tela-login');
     //navigator['app'].exitApp();
     //this.platform.exit
   }

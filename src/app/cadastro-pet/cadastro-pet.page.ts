@@ -15,16 +15,19 @@ export class CadastroPetPage implements OnInit {
   formulario:FormGroup;
   model:Pet;
   imagem = '../../assets/img/camera_on.png';
+  nomeImg = null;
   estado = null;
   cidade = null;
   cidades = [];
   brasil:Object[];
+  idades:Object[];
 
   constructor(private formBuilder: FormBuilder, private toastController: ToastController,
               private petDAO: PetService, private camera: Camera, private util: UtilService) { }
 
   ngOnInit() {
     this.brasil = this.util.getBrasil();
+    this.idades = this.util.getIdades();
     this.model = new Pet();
     this.formulario = this.formBuilder.group({
       nome: ['',[Validators.required]],
@@ -40,7 +43,7 @@ export class CadastroPetPage implements OnInit {
   getCidades()
   {
     this.util.getBrasil().forEach(estado => {
-      if (estado.nome == this.estado)
+      if (estado.sigla == this.estado)
         this.cidades = estado.cidades;
     });
   }
@@ -56,7 +59,8 @@ export class CadastroPetPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.CAMERA
     }).then(foto => {
-      this.imagem = 'data:image/jpeg;base64,'+foto;
+      this.imagem = `data:image/jpeg;base64,${foto}`;
+      this.nomeImg = 'pet';
     });
   }
 
@@ -72,10 +76,10 @@ export class CadastroPetPage implements OnInit {
       this.model.cidade = this.formulario.get('cidade').value;
       this.model.idade = this.formulario.get('idade').value;
       
-      if (this.petDAO.cadastrar(this.model))
+      if (this.petDAO.cadastrar(this.model, this.nomeImg, this.imagem))
       {
         this.mostrarMsg('Pet Cadastrado com sucesso');
-        this.model = new Pet();
+        this.formulario.reset();
       }
     }
     else
