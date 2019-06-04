@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "207215009124",
+    "firebase_url": "https://adote-um-pet-projeto-faculdade.firebaseio.com",
+    "project_id": "adote-um-pet-projeto-faculdade",
+    "storage_bucket": "adote-um-pet-projeto-faculdade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207215009124:android:4fd680d7bc5bf51f",
+        "android_client_info": {
+          "package_name": "br.com.caiocs100.adoteUmPet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207215009124-6lreuf1bjng7uas30fesorshdd4m013d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtrIkmVufC-Fjcgo6VbWr4Sm8sJe7mac8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207215009124-6lreuf1bjng7uas30fesorshdd4m013d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

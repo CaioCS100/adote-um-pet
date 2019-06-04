@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
 import { TelaInicialPage } from './tela-inicial.page';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 const routes: Routes = [
   {
@@ -26,6 +26,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TelaInicialPage]
+  declarations: [TelaInicialPage],
+  providers: [FCM]
 })
 export class TelaInicialPageModule {}
