@@ -8,22 +8,22 @@
 </ion-header>
 
 <ion-content>
-    form [formGroup]="formulario">
+    <form [formGroup]="formulario">
   
     <div id="imagem" class="imagem">
-      <ion-img [src]="imagem" (click)="tirarFoto()" class="foto"></ion-img>
+      <ion-img [src]="model.pathImages" class="foto"></ion-img>
     </div>
   
     <ion-row>
       <ion-col size="12">
         <ion-label position="floating" class="labels">Nome do Pet:</ion-label>
         <ion-item class="espaco">
-          <ion-input type="text" formControlName="nome" placeholder="Digite o nome do pet"></ion-input>
+          <ion-input type="text" [(ngModel)]="model.nome" formControlName="nome" placeholder="Digite o nome do pet"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     
-    <ion-radio-group formControlName="genero">
+    <ion-radio-group [(ngModel)]="model.genero" formControlName="genero">
       <ion-label class="labels">Gênero do Pet:</ion-label>
       <ion-row>
         <ion-col size="6">
@@ -42,7 +42,7 @@
       </ion-row>
     </ion-radio-group>
     
-    <ion-radio-group formControlName="sexo">
+    <ion-radio-group [(ngModel)]="model.sexo" formControlName="sexo">
       <ion-label class="labels">Sexo do Pet:</ion-label>
       <ion-row>
         <ion-col size="6">
@@ -64,7 +64,7 @@
     <ion-row>
       <ion-label class="labels">Idade do Pet:</ion-label>
       <ion-col size="12">
-        <ion-select placeholder="Escolha a faixa de idade do pet" formControlName="idade">
+        <ion-select placeholder="Escolha a faixa de idade do pet" [(ngModel)]="model.idade" formControlName="idade">
           <ion-select-option *ngFor="let idade of idades" [value]="idade.valor">{{idade.texto}}</ion-select-option>
         </ion-select>
       </ion-col>
@@ -74,7 +74,7 @@
       <ion-col size="12">
         <ion-label position="floating" class="labels">Telefone:</ion-label>
         <ion-item class="espaco">
-          <ion-input type="number" formControlName="telefone" placeholder="Digite seu telefone para contato"></ion-input>
+          <ion-input type="text" formControlName="telefone" [(ngModel)]="model.telefone" placeholder="Digite seu telefone para contato"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -82,7 +82,7 @@
     <ion-row>
       <ion-label class="labels">Estado:</ion-label>
       <ion-col size="12">
-        <ion-select placeholder="Selecione um estado" formControlName="estado" (ionChange)="getCidades()" [(ngModel)]="estado">
+        <ion-select placeholder="Selecione um estado" [(ngModel)]="model.estado" formControlName="estado" (ionChange)="getCidades()">
           <ion-select-option *ngFor="let estado of brasil" [value]="estado.sigla">{{estado.nome}}</ion-select-option>
         </ion-select>
       </ion-col>
@@ -91,14 +91,14 @@
     <ion-row>
       <ion-label class="labels">Cidade:</ion-label>
       <ion-col size="12">
-        <ion-select placeholder="Selecione uma cidade" formControlName="cidade">
+        <ion-select placeholder="Selecione uma cidade" [(ngModel)]="model.cidade" formControlName="cidade">
           <ion-select-option *ngFor="let cidade of cidades" [value]="cidade">{{cidade}}</ion-select-option>
         </ion-select>
       </ion-col>
     </ion-row>
   
-    <ion-button color="primary" shape="round" expand="full" id="cadastrar" (click)="cadastrarPet()">
-        <span class="especial">Cadastrar pet</span>
+    <ion-button color="danger" shape="round" expand="full" id="adotar" (click)="adotar()">
+        <span class="especial">Adotar pet</span>
       </ion-button>
     </form>
 </ion-content>

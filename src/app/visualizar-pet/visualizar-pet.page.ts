@@ -13,23 +13,26 @@ import { PetService } from '../servicos/pet.service';
 })
 export class VisualizarPetPage implements OnInit {
   formulario:FormGroup;
-  model:Pet;
+  model:Pet = new Pet();
   imagem = '../../assets/img/camera_on.png';
   nomeImg = null;
-  estado = null;
   cidade = null;
   cidades = [];
   brasil:Object[];
   idades:Object[];
 
   constructor(private activitedRouted:ActivatedRoute, private formBuilder: FormBuilder, private toastController: ToastController,
-    private petDAO: PetService, private camera: Camera, private util: UtilService) { }
+    private petDAO: PetService, private util: UtilService) { }
 
   ngOnInit() {
-    console.log(this.activitedRouted.snapshot.params['id']);
     this.brasil = this.util.getBrasil();
     this.idades = this.util.getIdades();
-    this.model = new Pet();
+    this.petDAO.procurarPet(this.activitedRouted.snapshot.params['id']).then(result => {
+      this.model = result;
+      this.petDAO.procurarImg(this.model.pathImages, this.model.id).then(img => {
+        this.model.pathImages = img;
+      });
+    });
     this.formulario = this.formBuilder.group({
       nome: ['',[Validators.required]],
       sexo: ['',[Validators.required]],
@@ -44,8 +47,24 @@ export class VisualizarPetPage implements OnInit {
   getCidades()
   {
     this.util.getBrasil().forEach(estado => {
-      if (estado.sigla == this.estado)
+      if (estado.sigla == this.model.estado)
         this.cidades = estado.cidades;
+    });
+  }
+
+  adotar()
+  {
+    this.petDAO.getKey(this.model.id).then(chave => {
+      this.petDAO.getIdUser().then(user => {
+        this.model.adotado = user;
+        this.petDAO.adotarPet(this.model, chave).then(msg => {
+          console.log(msg);
+          
+        });
+      });
+
+      
+      console.log(chave);
     });
   }
 
