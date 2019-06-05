@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -10,7 +12,8 @@ import { FCM } from '@ionic-native/fcm/ngx';
 })
 export class TelaInicialPage implements OnInit {
 
-  constructor(private router: Router,  private fcm: FCM) { }
+  constructor(private router: Router,  private fcm: FCM, private admobFree:AdMobFree,
+              private toastController: ToastController) { }
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
@@ -22,6 +25,24 @@ export class TelaInicialPage implements OnInit {
       this.fcm.subscribeToTopic("dono");
       });
     });
+    this.admobFree.banner.config({
+      id: 'ca-app-pub-3953703854206911/8868972710',
+      isTesting:true, //Está em ambiente de teste
+      autoShow: true
+    });
+
+     this.admobFree.banner.prepare()
+       .then(() => {
+            this.toastController.create({
+              message: 'Sucesso',
+              duration: 2000
+            }).then(t => t.present());
+        }).catch(e => {
+          this.toastController.create({
+            message: e,
+            duration: 2000
+          }).then(t => t.present())
+        })
   }
 
   sair()

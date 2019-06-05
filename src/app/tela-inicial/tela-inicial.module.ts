@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TelaInicialPage } from './tela-inicial.page';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 const routes: Routes = [
   {
@@ -27,6 +28,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [TelaInicialPage],
-  providers: [FCM]
+  providers: [FCM, AdMobFree]
 })
 export class TelaInicialPageModule {}
