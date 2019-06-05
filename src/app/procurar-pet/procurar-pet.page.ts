@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UtilService } from '../servicos/util.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { PetService } from '../servicos/pet.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-procurar-pet',
@@ -17,7 +18,7 @@ export class ProcurarPetPage implements OnInit {
   brasil:Object[];
 
   constructor(private formBuilder: FormBuilder, private util: UtilService,
-              private dao: PetService) { }
+              private dao: PetService, private router:Router) { }
 
   ngOnInit() {
     this.brasil = this.util.getBrasil();
@@ -49,11 +50,9 @@ export class ProcurarPetPage implements OnInit {
     }
   }
 
-  visualizar(t)
+  visualizar(id)
   {
-    console.log('aqui');
-    console.log(t);
-    
+    this.router.navigate(['/visualizar-pet', id]);
   }
 
   habilitarBusca()
