@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: '', loadChildren: './tela-inicial/tela-inicial.module#TelaInicialPageModule' },
   { path: 'tela-login', loadChildren: './tela-login/tela-login.module#TelaLoginPageModule' },
   { path: 'tela-cadastro-login', loadChildren: './tela-cadastro-login/tela-cadastro-login.module#TelaCadastroLoginPageModule' },
-  { path: 'cadastro-pet', loadChildren: './cadastro-pet/cadastro-pet.module#CadastroPetPageModule' },
+  { path: 'cadastro-pet', loadChildren: './cadastro-pet/cadastro-pet.module#CadastroPetPageModule' },  { path: 'procurar-pet', loadChildren: './procurar-pet/procurar-pet.module#ProcurarPetPageModule' },
+
 ];
 
 @NgModule({

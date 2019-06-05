@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Procurar Cachorros</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formulario">
+    <ion-button id="buscar" expand="full" (click)="habilitarBusca()">
+      Procurar Estado
+    </ion-button>
+    <div id="procurar" class="esconder">
+      <ion-row>
+        <ion-label class="labels espaco">Estado:</ion-label>
+        <ion-col size="12">
+          <ion-select placeholder="Selecione um estado" formControlName="estado" (ionChange)="getCidades()" [(ngModel)]="estado">
+            <ion-select-option *ngFor="let estado of brasil" [value]="estado.sigla">{{estado.nome}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+        
+      <ion-row>
+        <ion-label class="labels">Cidade:</ion-label>
+        <ion-col size="12">
+          <ion-select placeholder="Selecione uma cidade" formControlName="cidade">
+            <ion-select-option *ngFor="let cidade of cidades" [value]="cidade">{{cidade}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      
+      <ion-button color="primary" shape="round" expand="full" id="cadastrar" (click)="procurar()">
+        <span class="especial">Procurar</span>
+      </ion-button>
+    </div>
+    <ion-card *ngFor="let animal of animais" (click)="visualizar(animal.id)">
+      <ion-card-header>
+        <ion-card-title>{{animal.nome}}</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <img src="{{animal.urlFotos}}" height="200px" width="150px">
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

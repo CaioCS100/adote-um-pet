@@ -17,6 +17,37 @@ export class PetService {
     }); 
   }
 
+  async procurarPets(estado:string, cidade:string)
+  {
+    var dados = [];
+
+    await firebase.database().ref('/pet').once('value').then(snapshot => {
+      snapshot.forEach(snap => {
+        snap.forEach(pet => {
+          if(pet.val().genero == 'Cachorro' && pet.val().estado == estado && pet.val().cidade == cidade)
+            dados.push({id: pet.val().id, nome: pet.val().nome, nomeImgs: pet.val().pathImages, urlFotos: []});
+        });
+      });
+    });
+
+    return dados;
+  }
+
+  async procurarImg(nomeImgs:string[] ,id:string)
+  {
+    var urls = []
+    for (let index = 0; index < nomeImgs.length; index++) 
+    {
+      await firebase.storage().ref('pets').child(id).child(nomeImgs[index]).getDownloadURL().then(url => {
+          urls.push(url);
+      }).catch(erro => {
+          console.log(erro);
+      });
+    }
+
+    return urls;
+  }
+
   async cadastrar(model:Pet, nomeFoto, arquivo) {
     let today = new Date();
     let uid = this.db.push().key;

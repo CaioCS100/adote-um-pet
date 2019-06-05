@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
-
-
 #titulo, .especial, ion-input{
-    font-family: 'Pacifico', cursive;
+    color: black;
+    margin: 0px 0px 0px 0px;
+    font-family: 'Circular Std Medium';
 }
 
 ion-content{
@@ -10,7 +9,7 @@ ion-content{
 }
 
 ion-list {
-    margin-top: 35%;
+    margin-top: 50%;
     --ion-item-background: rgba(255, 255, 255, 0.2);
     margin-bottom: 5%;
 }

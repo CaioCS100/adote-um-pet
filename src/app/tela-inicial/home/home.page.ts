@@ -18,4 +18,9 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('cadastro-pet');
   }
 
+  procurarCachorro()
+  {
+    this.router.navigateByUrl('procurar-pet')
+  }
+
 }

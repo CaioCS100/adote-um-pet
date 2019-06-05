@@ -1,33 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 
-#login{
+#login {
     margin-top: 5%;
 }
 
-#titulo, .especial, ion-input{
-    font-family: 'Pacifico', cursive;
+#titulo, ion-input {
+    color: black;
+    // margin: 0px 0px 0px 0px;
+    font-family: 'Circular Std Medium';
 }
 
-#titulo{
+#titulo {
     text-align: center;
     color: black;
     font-weight: bolder;
     margin: 6% auto 6% auto;
 }
 
-.link{
+.link {
+    font-family: 'Circular Std Medium';
     padding-left: 20%;
     text-decoration: underline;
     color: white;
     font-size: 15pt;
 }
 
-ion-content{
+ion-content {
     --background: url('../../assets/img/main_background.jpg') center no-repeat;
 }
 
 ion-list {
     --ion-item-background: rgba(255, 255, 255, 0.0);
+    margin-top: 40%;
     margin-bottom: 5%;
 }
 

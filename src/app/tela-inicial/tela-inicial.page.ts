@@ -25,24 +25,26 @@ export class TelaInicialPage implements OnInit {
       this.fcm.subscribeToTopic("dono");
       });
     });
-    this.admobFree.banner.config({
-      id: 'ca-app-pub-3953703854206911/8868972710',
-      isTesting:true, //Está em ambiente de teste
-      autoShow: true
-    });
+    // this.admobFree.banner.config({
+    //   id: 'ca-app-pub-3953703854206911/8868972710',
+    //   isTesting:true, //Está em ambiente de teste
+    //   autoShow: true
+    // });
 
-     this.admobFree.banner.prepare()
-       .then(() => {
-            this.toastController.create({
-              message: 'Sucesso',
-              duration: 2000
-            }).then(t => t.present());
-        }).catch(e => {
-          this.toastController.create({
-            message: e,
-            duration: 2000
-          }).then(t => t.present())
-        })
+    // this.admobFree.banner.prepare();
+
+    //  this.admobFree.banner.prepare()
+    //    .then(() => {
+    //         this.toastController.create({
+    //           message: 'Sucesso',
+    //           duration: 2000
+    //         }).then(t => t.present());
+    //     }).catch(e => {
+    //       this.toastController.create({
+    //         message: e,
+    //         duration: 2000
+    //       }).then(t => t.present())
+    //     })
   }
 
   sair()
